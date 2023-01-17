@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/TallyPay/static/css/main.2626a418.css",
-    "main.js": "/TallyPay/static/js/main.063ffd8c.js",
+    "main.js": "/TallyPay/static/js/main.f4e53224.js",
     "static/js/787.8f15e98f.chunk.js": "/TallyPay/static/js/787.8f15e98f.chunk.js",
     "index.html": "/TallyPay/index.html",
     "main.2626a418.css.map": "/TallyPay/static/css/main.2626a418.css.map",
-    "main.063ffd8c.js.map": "/TallyPay/static/js/main.063ffd8c.js.map",
+    "main.f4e53224.js.map": "/TallyPay/static/js/main.f4e53224.js.map",
     "787.8f15e98f.chunk.js.map": "/TallyPay/static/js/787.8f15e98f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2626a418.css",
-    "static/js/main.063ffd8c.js"
+    "static/js/main.f4e53224.js"
   ]
 }
