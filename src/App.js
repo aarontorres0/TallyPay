@@ -47,34 +47,42 @@ function App() {
       <br />
       <label>
         Tip Percentage:
-        <div>
-          <input
-            type="radio"
-            name="tipPercent"
-            onClick={() => {
-              setTipPercent(0.15);
-              calculateTotalAmount();
-            }}
-          />
-          15%
-          <input
-            type="radio"
-            name="tipPercent"
-            onClick={() => {
-              setTipPercent(0.18);
-              calculateTotalAmount();
-            }}
-          />
-          18%
-          <input
-            type="radio"
-            name="tipPercent"
-            onClick={() => {
-              setTipPercent(0.2);
-              calculateTotalAmount();
-            }}
-          />
-          20%
+        <div className="segmented-control-container">
+          <div className="segmented-control">
+            <button
+              className={`segmented-control__button ${
+                tipPercent === 0.15 ? "active" : ""
+              }`}
+              onClick={() => {
+                setTipPercent(0.15);
+                calculateTotalAmount();
+              }}
+            >
+              15%
+            </button>
+            <button
+              className={`segmented-control__button ${
+                tipPercent === 0.18 ? "active" : ""
+              }`}
+              onClick={() => {
+                setTipPercent(0.18);
+                calculateTotalAmount();
+              }}
+            >
+              18%
+            </button>
+            <button
+              className={`segmented-control__button ${
+                tipPercent === 0.2 ? "active" : ""
+              }`}
+              onClick={() => {
+                setTipPercent(0.2);
+                calculateTotalAmount();
+              }}
+            >
+              20%
+            </button>
+          </div>
         </div>
       </label>
 
