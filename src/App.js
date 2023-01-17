@@ -36,9 +36,9 @@ function App() {
     <div className="container">
       <h1>TallyUp</h1>
       <label>
-
         <input
           type="number"
+          step="0.01"
           placeholder="Enter bill amount"
           value={billAmount}
           onChange={(e) => setBillAmount(e.target.value)}
@@ -85,16 +85,9 @@ function App() {
         </div>
       </label>
       <br />
-      <label>
-        Tip Amount: $
-        <span>{tipAmount}</span>
-      </label>
-
+      <label>Tip Amount: ${isNaN(tipAmount) ? 0 : tipAmount}</label>
       <br />
-      <label>
-        Total Amount: $
-        <span>{totalAmount}</span>
-      </label>
+      <label>Total Amount: ${isNaN(totalAmount) ? 0 : totalAmount}</label>
     </div>
   );
 }
