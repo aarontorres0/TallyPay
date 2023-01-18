@@ -26,7 +26,7 @@ input[type="number"] {
 }
 
 label {
-  font-size: 18px;
+  font-size: 28px;
   font-weight: bold;
   width: 100%;
   text-align: center;
@@ -36,27 +36,11 @@ label {
 
 h1 {
   text-align: center;
-  font-size: 32px;
+  font-size: 52px;
   font-weight: bold;
   margin-bottom: 24px;
   width: 100%;
   color: var(--primary-color);
-}
-
-@media only screen and (max-width: 600px) {
-  /* styles for screens smaller than 600px */
-  .container {
-    padding: 12px;
-  }
-  input[type="number"] {
-    font-size: 16px;
-  }
-  label {
-    font-size: 16px;
-  }
-  h1 {
-    font-size: 24px;
-  }
 }
 
 .segmented-control {
@@ -86,29 +70,47 @@ h1 {
   border-radius: 10px;
 }
 
-.split-bill-group {
-  display: flex;
-  align-items: center;
+.total-container {
+  border: 1px solid black;
+  padding: 16px;
+  margin-top: 16px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
 }
 
+.input-group {
+  display: flex; /* add display flex */
+  flex-wrap: wrap; /* allow the content to wrap if needed */
+  justify-content: space-between; /* align the content to the space between */
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  width: 100%; /* adjust the width */
+  max-width: 400px;
+}
+
+.split-bill-group {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
 .split-bill-group label {
-  margin-right: 40px;
+  flex: 1;
+  margin-right: 50px;
   width: 30%;
   white-space: nowrap;
   box-sizing: border-box;
 }
 
 .split-bill-group .segmented-control {
-  width: 70%;
-  box-sizing: border-box;
-}
-
-.people-counter {
-  display: flex;
+  width: 80%;
 }
 
 .people-counter button {
-  width: 25px;
+  width: 40px;
   height: 25px;
   border: 1px solid black;
   background-color: #ddd;
@@ -118,10 +120,59 @@ h1 {
   cursor: pointer;
   border-radius: 10px;
   transition: color 0.8s ease-in-out;
+  margin: 0px 8px;
 }
 
 .people-counter span {
   margin: 0 10px;
   font-size: 20px;
   color: black;
+}
+
+.total-per-person {
+  margin-top: 10px; /* add a top margin to create space between the sections */
+}
+
+@media only screen and (max-width: 600px) {
+  /* styles for screens smaller than 600px */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+  }
+  input[type="number"],
+  .segmented-control {
+    margin-bottom: 12px;
+  }
+  label {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 36px;
+  }
+
+  .input-group {
+    width: 80%;
+  }
+  .split-bill-group label {
+    width: 80%; /* make the label take up the full width of the container */
+    text-align: left; /* align the label to the left */
+  }
+  .segmented-control {
+    width: 80%; /* make the segment control take up the full width of the container */
+  }
+
+  .people-counter button {
+    width: 40px;
+    height: 25px;
+    border: 1px solid black;
+    background-color: #ddd;
+    font-size: 13px;
+  }
+
+  button {
+    color: black;
+    font-weight: bold;
+  }
 }
