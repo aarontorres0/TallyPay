@@ -2,11 +2,15 @@ import "./App.css";
 
 import React, { useState, useEffect } from "react";
 import { useCallback } from "react";
+
 function App() {
   const [billAmount, setBillAmount] = useState("");
   const [tipPercent, setTipPercent] = useState(0.15);
   const [tipAmount, setTipAmount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [splitBill, setSplitBill] = useState("No");
+  const [peopleCounter, setPeopleCounter] = useState(1);
+  const [totalPerPerson, setTotalPerPerson] = useState(0);
 
   const calculateTotalAmount = useCallback(() => {
     setTipAmount((parseFloat(billAmount) * tipPercent).toFixed(2));
@@ -16,6 +20,18 @@ function App() {
   useEffect(() => {
     calculateTotalAmount();
   }, [calculateTotalAmount]);
+
+  useEffect(() => {
+    setTotalPerPerson((totalAmount / peopleCounter).toFixed(2));
+  }, [totalAmount, peopleCounter]);
+
+  useEffect(() => {
+    if (!isNaN(billAmount) && billAmount > 0) {
+      setTotalPerPerson((totalAmount / peopleCounter).toFixed(2));
+    } else {
+      setTotalPerPerson(0);
+    }
+  }, [totalAmount, peopleCounter, billAmount]);
 
   const handleBillAmountChange = (e) => {
     setBillAmount(e.target.value);
@@ -32,9 +48,19 @@ function App() {
     );
   };
 
+  const handleIncrement = () => {
+    setPeopleCounter(peopleCounter + 1);
+  };
+
+  const handleDecrement = () => {
+    if (peopleCounter > 1) {
+      setPeopleCounter(peopleCounter - 1);
+    }
+  };
+
   return (
     <div className="container">
-      <h1>TallyUp</h1>
+      <h1>TallyUp 💳</h1>
       <label>
         <input
           type="number"
@@ -85,9 +111,46 @@ function App() {
         </div>
       </label>
       <br />
-      <label>Tip Amount: ${isNaN(tipAmount) ? 0 : tipAmount}</label>
+      <label>Tip : ${isNaN(tipAmount) ? 0 : tipAmount}</label>
       <br />
-      <label>Total Amount: ${isNaN(totalAmount) ? 0 : totalAmount}</label>
+      <label>Total : ${isNaN(totalAmount) ? 0 : totalAmount}</label>
+      <br />
+
+      <div className="split-bill-group">
+        <label>Split Bill?</label>
+        <div className="segmented-control">
+          <button
+            className={`segmented-control__button ${
+              splitBill === "Yes" ? "active" : ""
+            }`}
+            onClick={() => setSplitBill("Yes")}
+          >
+            Yes
+          </button>
+          <button
+            className={`segmented-control__button ${
+              splitBill === "No" ? "active" : ""
+            }`}
+            onClick={() => setSplitBill("No")}
+          >
+            No
+          </button>
+        </div>
+      </div>
+
+      {splitBill === "Yes" && (
+        <div className="people-counter">
+          <label>Number of People:</label>
+          <button onClick={handleDecrement}>-</button>
+          <span>{peopleCounter}</span>
+          <button onClick={handleIncrement}>+</button>
+        </div>
+      )}
+      {splitBill === "Yes" && (
+        <label className="total-per-person">
+          Total per person: ${totalPerPerson}
+        </label>
+      )}
     </div>
   );
 }
