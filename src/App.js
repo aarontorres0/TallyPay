@@ -48,6 +48,8 @@ function App() {
       <label>
         <input
           type="number"
+          pattern="[0-9]*"
+          inputmode="decimal"
           step="0.01"
           placeholder="Enter bill amount"
           value={billAmount}
